@@ -57,8 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+                android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -67,6 +66,19 @@
                     android:textColorHint="#7a8089"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@null"
+                android:background="@color/teal_700"
+                android:text="@string/start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@android:color/white">
+
+            </Button>
 
         </LinearLayout>
 

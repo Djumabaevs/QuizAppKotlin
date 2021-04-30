@@ -5,11 +5,12 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.quizappkotlin.databinding.ActivityQuizQuestionsBinding
 
-class QuizQuestionsActivity : AppCompatActivity() {
+class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var binding2: ActivityQuizQuestionsBinding
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
@@ -23,6 +24,11 @@ class QuizQuestionsActivity : AppCompatActivity() {
         mQuestionsList = Constants.getQuestions()
 
         setQuestion()
+
+        binding2.tvOptionOne.setOnClickListener(this)
+        binding2.tvOptionTwo.setOnClickListener(this)
+        binding2.tvOptionThree.setOnClickListener(this)
+        binding2.tvOptionFour.setOnClickListener(this)
 
     }
 
@@ -54,5 +60,31 @@ class QuizQuestionsActivity : AppCompatActivity() {
             option.typeface = Typeface.DEFAULT
             option.background = ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
         }
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id) {
+            R.id.tv_option_one -> {
+                selectedOptionView(binding2.tvOptionOne, 1)
+            }
+            R.id.tv_option_two -> {
+              selectedOptionView(  binding2.tvOptionTwo, 2)
+            }
+            R.id.tv_option_three -> {
+                selectedOptionView(binding2.tvOptionThree, 3)
+            }
+            R.id.tv_option_four -> {
+                selectedOptionView(binding2.tvOptionFour, 4)
+            }
+        }
+    }
+
+    private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int) {
+        defaultOptionsView()
+        mSelectedOptionPosition = selectedOptionNumber
+
+        tv.setTextColor(Color.parseColor("#363a43"))
+        tv.setTypeface(tv.typeface, Typeface.BOLD)
+        tv.background = ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
     }
 }

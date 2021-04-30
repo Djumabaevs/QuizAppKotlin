@@ -34,7 +34,7 @@
 
         <LinearLayout
             android:id="@+id/ll_progress_details"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center_vertical"
@@ -72,7 +72,7 @@
             android:padding="15dp"
             android:textColor="#7a8089"
             android:textSize="18sp"
-            android:text="Apple"
+            tools:text="Apple"
             android:background="@drawable/default_option_border_bg"/>
 
         <TextView
@@ -84,8 +84,8 @@
             android:padding="15dp"
             android:textColor="#7a8089"
             android:textSize="18sp"
-            android:text="Apple"
-            android:background=""/>
+            tools:text="SLime"
+            android:background="@drawable/default_option_border_bg"/>
 
         <TextView
             android:id="@+id/tv_option_three"
@@ -96,8 +96,8 @@
             android:padding="15dp"
             android:textColor="#7a8089"
             android:textSize="18sp"
-            android:text="Apple"
-            android:background=""/>
+            tools:text="Google"
+            android:background="@drawable/default_option_border_bg"/>
 
         <TextView
             android:id="@+id/tv_option_four"
@@ -108,9 +108,20 @@
             android:padding="15dp"
             android:textColor="#7a8089"
             android:textSize="18sp"
-            android:text="Apple"
-            android:background=""/>
+            tools:text="Amazon"
+            android:background="@drawable/default_option_border_bg"/>
 
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_margin="10dp"
+            android:backgroundTint="@null"
+            android:background="@color/teal_700"
+            android:layout_width="match_parent"
+            android:text="@string/submit"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

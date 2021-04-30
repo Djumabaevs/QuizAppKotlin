@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.quizappkotlin.databinding.ActivityQuizQuestionsBinding
 
@@ -34,10 +35,16 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setQuestion() {
-        mCurrentPosition = 1
+
         val question = mQuestionsList!![mCurrentPosition - 1]
 
         defaultOptionsView()
+
+        if(mCurrentPosition == mQuestionsList!!.size) {
+            binding2.submitBtn.text = getString(R.string.finish_tn)
+        } else {
+            binding2.submitBtn.text = getString(R.string.submit_tn)
+        }
 
         binding2.progressBar.progress = mCurrentPosition
         binding2.tvProgress.text = "$mCurrentPosition" + "/" + binding2.progressBar.max
@@ -78,7 +85,30 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 selectedOptionView(binding2.tvOptionFour, 4)
             }
             R.id.submit_btn -> {
+                if(mSelectedOptionPosition == 0) {
+                    mCurrentPosition ++
 
+                    when{
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        } else -> {
+                        Toast.makeText(this, "You have successfully completed the Quiz!", Toast.LENGTH_SHORT).show()
+                       }
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    if(question!!.correctAnswer != mSelectedOptionPosition) {
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    if(mCurrentPosition == mQuestionsList?.size) {
+                        binding2.submitBtn.text = getString(R.string.finish)
+                    } else {
+                        binding2.submitBtn.text = getString(R.string.go_next_question)
+                    }
+                    mSelectedOptionPosition = 0
+                }
             }
         }
     }

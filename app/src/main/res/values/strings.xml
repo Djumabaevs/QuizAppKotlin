@@ -7,4 +7,8 @@
     <string name="start">Start</string>
     <string name="what_country_does_this_flag_belong_to">What country does this flag belong to?</string>
     <string name="submit">SUBMIT</string>
+    <string name="finish">FINISH</string>
+    <string name="go_next_question">GO TO NEXT QUESTION</string>
+    <string name="finish_tn">FINISH</string>
+    <string name="submit_tn">SUBMIT</string>
 </resources>

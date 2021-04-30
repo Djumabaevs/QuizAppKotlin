@@ -29,6 +29,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         binding2.tvOptionTwo.setOnClickListener(this)
         binding2.tvOptionThree.setOnClickListener(this)
         binding2.tvOptionFour.setOnClickListener(this)
+        binding2.submitBtn.setOnClickListener(this)
 
     }
 
@@ -76,6 +77,18 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
             R.id.tv_option_four -> {
                 selectedOptionView(binding2.tvOptionFour, 4)
             }
+            R.id.submit_btn -> {
+
+            }
+        }
+    }
+
+    private fun answerView(answer: Int, drawableView: Int) {
+        when(answer) {
+            1 -> { binding2.tvOptionOne.background = ContextCompat.getDrawable(this, drawableView) }
+            2 -> { binding2.tvOptionTwo.background = ContextCompat.getDrawable(this, drawableView) }
+            3 -> { binding2.tvOptionThree.background = ContextCompat.getDrawable(this, drawableView) }
+            4 -> { binding2.tvOptionFour.background = ContextCompat.getDrawable(this, drawableView) }
         }
     }
 

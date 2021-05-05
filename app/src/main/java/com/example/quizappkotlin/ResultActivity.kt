@@ -1,8 +1,10 @@
 package com.example.quizappkotlin
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.quizappkotlin.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
@@ -13,6 +15,12 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(bindingResult.root)
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.setDecorFitsSystemWindows(false)
+        } else {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        }
+
         val username = intent.getStringExtra(Constants.USER_NAME)
         bindingResult.tvName.text = username
 
@@ -22,6 +30,7 @@ class ResultActivity : AppCompatActivity() {
 
         bindingResult.btnFinish.setOnClickListener {
             startActivity(Intent(this, MainActivity:: class.java))
+            finish()
         }
 
     }

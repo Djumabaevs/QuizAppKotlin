@@ -103,6 +103,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                         startActivity(intent)
+                        finish()
 
                         Toast.makeText(this, "You have successfully completed the Quiz!", Toast.LENGTH_SHORT).show()
                        }

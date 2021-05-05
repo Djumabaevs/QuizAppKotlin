@@ -63,7 +63,7 @@
         android:layout_marginTop="10dp"
         android:background="@android:color/white"
         android:text="FINISH"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/purple_700"
         android:textSize="18sp"
         android:textStyle="bold" />
 

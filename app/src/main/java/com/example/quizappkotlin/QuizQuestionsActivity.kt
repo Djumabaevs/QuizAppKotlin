@@ -1,5 +1,6 @@
 package com.example.quizappkotlin
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.quizappkotlin.databinding.ActivityQuizQuestionsBinding
+import java.security.SecureRandomSpi
 
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var binding2: ActivityQuizQuestionsBinding
@@ -17,11 +19,14 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
     private var mCorrectAnswers: Int = 0
+    private var  mUserName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding2 = ActivityQuizQuestionsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding2.root)
+
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
 
         mQuestionsList = Constants.getQuestions()
 
@@ -93,6 +98,11 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         mCurrentPosition <= mQuestionsList!!.size -> {
                             setQuestion()
                         } else -> {
+                        val intent = Intent(this, ResultActivity:: class.java)
+                        intent.putExtra(Constants.USER_NAME, mUserName)
+                        intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                        intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+
                         Toast.makeText(this, "You have successfully completed the Quiz!", Toast.LENGTH_SHORT).show()
                        }
                     }
